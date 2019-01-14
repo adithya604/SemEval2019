@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import re
 import csv, random, os
 import operator
 import io
@@ -24,8 +25,8 @@ def read_question_labels_from_xml(input_xml_file):
         each_ques_dict = {}
         if label > -1:
             each_ques_dict["label"] = label
-        each_ques_dict["subject"]   = question_tag[0].text
-        each_ques_dict["body"]      = question_tag[1].text
+        each_ques_dict["subject"]   = string_parser(question_tag[0].text)
+        each_ques_dict["body"]      = string_parser(question_tag[1].text)
         questions_dict[question_id] = each_ques_dict
         """
         print(thread)
@@ -97,3 +98,8 @@ def get_label(original_label, label_mapping):
         return label_mapping[original_label]
 
     return -1
+
+def string_parser(text):
+    # for removing the URLs from the given text
+    text = re.sub(r'https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+    return text

@@ -16,13 +16,20 @@ from xgboost import XGBClassifier
 
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 
+without_urls = False
+
 def get_data_from_pickle_files():
     print "Reading train data:"
-    with open('questions_dict_train.pickle', 'rb') as handle:
+    question_dict_file = 'questions_dict_train.pickle'
+    x_data_file = 'X_data_combined_concat_train.pickle'
+    if without_urls:
+        question_dict_file = 'without_urls_' + question_dict_file
+        x_data_file = 'without_urls_' + x_data_file
+    with open(question_dict_file, 'rb') as handle:
         data_dict = pickle.load(handle)
     print len(data_dict)
 
-    with open('X_data_combined_concat_train.pickle', 'rb') as handle:
+    with open(x_data_file, 'rb') as handle:
         x_data = pickle.load(handle)
 
     # get relevant labels
@@ -202,12 +209,17 @@ def train_keran_nn():
 
 def write_to_output_xml(clf, model):
     print "Reading dev data:"
-    with open('questions_dict_dev.pickle', 'rb') as handle:
+    question_dict_file = 'questions_dict_dev.pickle'
+    x_data_file = 'X_data_combined_concat_dev.pickle'
+    if without_urls:
+        question_dict_file = 'without_urls_' + question_dict_file
+        x_data_file = 'without_urls_' + x_data_file
+    with open(question_dict_file, 'rb') as handle:
         data_dict = pickle.load(handle)
     print len(data_dict)
     print data_dict.keys()
 
-    with open('X_data_combined_concat_dev.pickle', 'rb') as handle:
+    with open(x_data_file, 'rb') as handle:
         x_data = pickle.load(handle)
 
     print "Prediction started:"
@@ -223,7 +235,7 @@ def write_to_output_xml(clf, model):
         y_pred = np.argmax(y_pred, axis=1)
     print y_pred.shape
 
-    file_name = 'predict_questions_' + model + '.txt'
+    file_name = 'without_urls_predict_questions_' + model + '.txt'
     file_name = os.path.join(curr_dir, "predict_output", "questions", file_name)
 
     with open(file_name, 'w') as handle:
@@ -274,7 +286,7 @@ def write_to_output_xml_from_model(model_file_name, model):
 
     print "Writing " + file_name + " completed...!"
 
-
+without_urls = True # set to false if we need data with URLs
 write_to_output_xml(train_xgboost_classifier(), model="xgboost")
 # write_to_output_xml_from_model("est_100_eta_0.1_model.model", "xgboost")
 

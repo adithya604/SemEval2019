@@ -44,22 +44,33 @@ def train_adaboost_classifer():
     x_data, y_data = get_data_from_pickle_files()
 
     print "Training Adaboost started:"
-    clf = AdaBoostClassifier()
-    params = {'n_estimators': range(5, 55, 5)}
 
-    grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
-    grid.fit(x_data, y_data)
+    # clf = AdaBoostClassifier()
+    # params = {'n_estimators': range(5, 55, 5)}
+    #
+    # grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
+    # grid.fit(x_data, y_data)
+    #
+    # best_estimator  = grid.best_estimator_
+    # best_parameters = grid.best_params_
+    # best_score      = grid.best_score_
+    # print "GridSearch Results:"
+    # print best_parameters
+    # print best_score
+    # print best_estimator
+    #
+    # # GridSearch
+    # # Results:
+    # # {'n_estimators': 45}
+    # # 0.4121212121212121
+    # # AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None,
+    # #                    learning_rate=1.0, n_estimators=45, random_state=None)
+    # # 0.357426097711812
 
-    best_estimator  = grid.best_estimator_
-    best_parameters = grid.best_params_
-    best_score      = grid.best_score_
-    print "GridSearch Results:"
-    print best_parameters
-    print best_score
-    print best_estimator
+    clf =     AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None,
+                       learning_rate=1.0, n_estimators=45, random_state=None)
 
-    clf = best_estimator
-    scores = cross_val_score(clf, x_data, y_data, cv=5)
+    scores = cross_val_score(clf, x_data, y_data, cv=10)
     print scores.mean()
 
 def train_extra_trees_classifier():
@@ -68,33 +79,43 @@ def train_extra_trees_classifier():
 
     print "Training Extra Trees started:"
 
-    clf = ExtraTreesClassifier()
-    params = {'n_estimators': [1, 3, 9, 15, 20], 'max_features': range(1, 30, 2)}
-    grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
-    grid.fit(x_data, y_data)
+    # clf = ExtraTreesClassifier()
+    # params = {'n_estimators': [1, 3, 9, 15, 20], 'max_features': range(1, 30, 2)}
+    # grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
+    # grid.fit(x_data, y_data)
+    #
+    # best_estimator  = grid.best_estimator_
+    # best_parameters = grid.best_params_
+    # best_score      = grid.best_score_
+    # print "GridSearch Results:"
+    # print best_parameters
+    # print best_score
+    # print best_estimator
+    #
+    # # GridSearch
+    # # Results:
+    # # {'max_features': 27, 'n_estimators': 9}
+    # # 0.3939393939393939
+    # # ExtraTreesClassifier(bootstrap=False, class_weight=None, criterion='gini',
+    # #                      max_depth=None, max_features=27, max_leaf_nodes=None,
+    # #                      min_impurity_decrease=0.0, min_impurity_split=None,
+    # #                      min_samples_leaf=1, min_samples_split=2,
+    # #                      min_weight_fraction_leaf=0.0, n_estimators=9, n_jobs=None,
+    # #                      oob_score=False, random_state=None, verbose=0, warm_start=False)
+    # # 0.37154021608643456
 
-    best_estimator  = grid.best_estimator_
-    best_parameters = grid.best_params_
-    best_score      = grid.best_score_
-    print "GridSearch Results:"
-    print best_parameters
-    print best_score
-    print best_estimator
+    clf =     ExtraTreesClassifier(bootstrap=False, class_weight=None, criterion='gini',
+                         max_depth=None, max_features=27, max_leaf_nodes=None,
+                         min_impurity_decrease=0.0, min_impurity_split=None,
+                         min_samples_leaf=1, min_samples_split=2,
+                         min_weight_fraction_leaf=0.0, n_estimators=9, n_jobs=None,
+                         oob_score=False, random_state=None, verbose=0, warm_start=False)
 
-    #GridSearch Results:
-    #{'max_features': 37, 'n_estimators': 20}
-    #0.5590339892665475
-
-    # clf = ExtraTreesClassifier(n_estimators=20, max_features=37)
-    clf = best_estimator
     scores = cross_val_score(clf, x_data, y_data, cv=10)
     print scores.mean()
 
     clf.fit(x_data, y_data)
 
-    # clf = AdaBoostClassifier(n_estimators=100)
-    # scores = cross_val_score(clf, x_data['data'], y_data, cv=5)
-    # print scores.mean()
     print "Training completed...!"
     return clf
 
@@ -104,20 +125,38 @@ def train_decision_tree_classifier():
 
     print "Training Decision tree started:"
 
-    clf = DecisionTreeClassifier()
-    params = {'max_depth': [1, 2, 4, 8, 12], 'min_samples_split': range(2, 20, 2)}
-    grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
-    grid.fit(x_data, y_data)
+    # clf = DecisionTreeClassifier()
+    # params = {'max_depth': [1, 2, 4, 8, 12], 'min_samples_split': range(2, 20, 2)}
+    # grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
+    # grid.fit(x_data, y_data)
+    #
+    # best_estimator  = grid.best_estimator_
+    # best_parameters = grid.best_params_
+    # best_score      = grid.best_score_
+    # print "GridSearch Results:"
+    # print best_parameters
+    # print best_score
+    # print best_estimator
+    #
+    # # GridSearch
+    # # Results:
+    # # {'min_samples_split': 18, 'max_depth': 12}
+    # # 0.4202020202020202
+    # # DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=12,
+    # #                        max_features=None, max_leaf_nodes=None,
+    # #                        min_impurity_decrease=0.0, min_impurity_split=None,
+    # #                        min_samples_leaf=1, min_samples_split=18,
+    # #                        min_weight_fraction_leaf=0.0, presort=False, random_state=None,
+    # #                        splitter='best')
+    # # 0.4103065226090436
 
-    best_estimator  = grid.best_estimator_
-    best_parameters = grid.best_params_
-    best_score      = grid.best_score_
-    print "GridSearch Results:"
-    print best_parameters
-    print best_score
-    print best_estimator
+    clf =     DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=12,
+                           max_features=None, max_leaf_nodes=None,
+                           min_impurity_decrease=0.0, min_impurity_split=None,
+                           min_samples_leaf=1, min_samples_split=18,
+                           min_weight_fraction_leaf=0.0, presort=False, random_state=None,
+                           splitter='best')
 
-    clf = best_estimator
     scores = cross_val_score(clf, x_data, y_data, cv=10)
     print scores.mean()
 
@@ -132,31 +171,40 @@ def train_random_forest_classifier():
 
     print "Training Random Forest started:"
 
-    clf = RandomForestClassifier()
-    params = {'n_estimators': range(5, 55, 5)}
-    grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
-    grid.fit(x_data, y_data)
+    # clf = RandomForestClassifier()
+    # params = {'n_estimators': range(5, 55, 5)}
+    # grid = GridSearchCV(estimator=clf, param_grid=params, cv=10)
+    # grid.fit(x_data, y_data)
+    #
+    # best_estimator  = grid.best_estimator_
+    # best_parameters = grid.best_params_
+    # best_score      = grid.best_score_
+    # print "GridSearch Results:"
+    # print best_parameters
+    # print best_score
+    # print best_estimator
+    #
+    # # GridSearch
+    # # Results:
+    # # {'n_estimators': 45}
+    # # 0.397979797979798
+    # # RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+    # #                        max_depth=None, max_features='auto', max_leaf_nodes=None,
+    # #                        min_impurity_decrease=0.0, min_impurity_split=None,
+    # #                        min_samples_leaf=1, min_samples_split=2,
+    # #                        min_weight_fraction_leaf=0.0, n_estimators=45, n_jobs=None,
+    # #                        oob_score=False, random_state=None, verbose=0,
+    # #                        warm_start=False)
+    # # 0.36041586634653855
 
-    best_estimator  = grid.best_estimator_
-    best_parameters = grid.best_params_
-    best_score      = grid.best_score_
-    print "GridSearch Results:"
-    print best_parameters
-    print best_score
-    print best_estimator
+    clf =     RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                           max_depth=None, max_features='auto', max_leaf_nodes=None,
+                           min_impurity_decrease=0.0, min_impurity_split=None,
+                           min_samples_leaf=1, min_samples_split=2,
+                           min_weight_fraction_leaf=0.0, n_estimators=45, n_jobs=None,
+                           oob_score=False, random_state=None, verbose=0,
+                           warm_start=False)
 
-    # GridSearch Results:
-    # {'n_estimators': 25}
-    # 0.5608228980322003
-    # RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-    #                        max_depth=None, max_features='auto', max_leaf_nodes=None,
-    #                        min_impurity_decrease=0.0, min_impurity_split=None,
-    #                        min_samples_leaf=1, min_samples_split=2,
-    #                        min_weight_fraction_leaf=0.0, n_estimators=25, n_jobs=None,
-    #                        oob_score=False, random_state=None, verbose=0,
-    #                        warm_start=False)
-
-    clf = best_estimator
     scores = cross_val_score(clf, x_data, y_data, cv=10)
     print scores.mean()
 
@@ -235,7 +283,8 @@ def train_keran_nn():
 
     callbacks = [EarlyStopping(monitor='val_loss', patience=7),
                  ModelCheckpoint(filepath='saved_models/keras_nn_best_model.h5', monitor='val_loss', save_best_only=True)]
-
+    # This saved model hasn't performed well. Hence, not using this model.
+    
     print "Fitting"
     print x_data.shape
     print y_data.shape

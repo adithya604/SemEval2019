@@ -140,7 +140,7 @@ file = "questions_train.xml"
 write_data_to_pickle(file, "train", vector_for="both", combination_type="concatenation") # Writing training Data
 
 file = "questions_dev.xml"
-write_data_to_pickle(file, "dev", vector_for="both", combination_type="concatenation") # Writing training Data
+write_data_to_pickle(file, "dev", vector_for="both", combination_type="concatenation") # Writing dev Data
 
 
 

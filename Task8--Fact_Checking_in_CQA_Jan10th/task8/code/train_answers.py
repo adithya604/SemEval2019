@@ -284,7 +284,7 @@ def train_keran_nn():
     callbacks = [EarlyStopping(monitor='val_loss', patience=7),
                  ModelCheckpoint(filepath='saved_models/keras_nn_best_model.h5', monitor='val_loss', save_best_only=True)]
     # This saved model hasn't performed well. Hence, not using this model.
-    
+
     print "Fitting"
     print x_data.shape
     print y_data.shape
@@ -325,7 +325,7 @@ def write_to_output_xml(clf, model):
 
     with open(file_name, 'w') as handle:
         for ind, qid in enumerate(x_data['ids']):
-            handle.write(qid+"\t"+str(y_pred[ind])+"\n")
+            handle.write(qid + "\t" + str(y_pred[ind]) + "\t" + str(2.0) + "\n")
 
     print "Writing " + file_name + " completed...!"
 

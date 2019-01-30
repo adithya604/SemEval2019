@@ -113,11 +113,15 @@ def write_data_to_pickle(filename, file_type, combination_type="concatenation", 
 
 
 
-file = "answers_train.xml"
-write_data_to_pickle(file, "train", combination_type="average") # Writing training Data
+# file = "answers_train.xml"
+# write_data_to_pickle(file, "train", combination_type="average") # Writing training Data
+#
+# file = "answers_dev.xml"
+# write_data_to_pickle(file, "dev", combination_type="average") # Writing dev Data
 
-file = "answers_dev.xml"
-write_data_to_pickle(file, "dev", combination_type="average") # Writing dev Data
+file = "answers_test.xml"
+write_data_to_pickle(file, "test", combination_type="concatenation") # Writing dev Data
+write_data_to_pickle(file, "test", combination_type="average") # Writing dev Data
 
 
 

@@ -20,6 +20,8 @@ np.random.seed(0)
 
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 
+without_urls = False
+
 def get_data_from_pickle_files():
 
     print "Reading train data:"
@@ -27,7 +29,7 @@ def get_data_from_pickle_files():
         data_dict = pickle.load(handle)
     print len(data_dict)
 
-    with open('answers_X_data_combined_concat_train.pickle', 'rb') as handle:
+    with open('answers_X_data_combined_average_train.pickle', 'rb') as handle:
         x_data = pickle.load(handle)
 
     # get relevant labels
@@ -297,15 +299,31 @@ def train_keran_nn():
     return model
 
 
-def write_to_output_xml(clf, model):
+def write_to_output_xml(clf, model, type_of_data = "dev"):
     opt_folder = "predict_output/answers/"
-    print "Reading dev data:"
-    with open('answers_dict_dev.pickle', 'rb') as handle:
+    # print "Reading dev data:"
+    # with open('answers_dict_dev.pickle', 'rb') as handle:
+    #     data_dict = pickle.load(handle)
+    # print len(data_dict)
+    # print data_dict.keys()
+    #
+    # with open('answers_X_data_combined_concat_dev.pickle', 'rb') as handle:
+    #     x_data = pickle.load(handle)
+
+    ## type_of_data takes either 'dev' or 'test'.
+    print "Reading " + type_of_data +" data:"
+    answers_dict_file = 'answers_dict_' + type_of_data + '.pickle'
+    x_data_file = 'answers_X_data_combined_average_' + type_of_data + '.pickle'
+    if without_urls:
+        answers_dict_file = 'without_urls_' + answers_dict_file
+        x_data_file = 'without_urls_' + x_data_file
+
+    with open(answers_dict_file, 'rb') as handle:
         data_dict = pickle.load(handle)
     print len(data_dict)
     print data_dict.keys()
 
-    with open('answers_X_data_combined_concat_dev.pickle', 'rb') as handle:
+    with open(x_data_file, 'rb') as handle:
         x_data = pickle.load(handle)
 
     print "Prediction started:"
@@ -321,7 +339,7 @@ def write_to_output_xml(clf, model):
         y_pred = np.argmax(y_pred, axis=1)
     print y_pred.shape
 
-    file_name = opt_folder + 'predict_answers_' + model + '.txt'
+    file_name = opt_folder + type_of_data +'_predict_answers_' + model + '_average.txt'
 
     with open(file_name, 'w') as handle:
         for ind, qid in enumerate(x_data['ids']):
@@ -331,32 +349,32 @@ def write_to_output_xml(clf, model):
 
 
 
-try:
-    write_to_output_xml(train_adaboost_classifer(), model="adaboost")
-except Exception:
-    print "Exception at adaboost"
-    pass
+# try:
+#     write_to_output_xml(train_adaboost_classifer(), model="adaboost")
+# except Exception:
+#     print "Exception at adaboost"
+#     pass
+#
+# try:
+#     write_to_output_xml(train_extra_trees_classifier(), model="extra_trees")
+# except Exception:
+#     print "Exception at extra trees"
+#     pass
+#
+# try:
+#     write_to_output_xml(train_decision_tree_classifier(), model="decision_tree")
+# except Exception:
+#     print "Exception at decision tree"
+#     pass
+#
+# try:
+#     write_to_output_xml(train_random_forest_classifier(), model="random_forest")
+# except Exception:
+#     print "Exception at random forest"
+#     pass
 
 try:
-    write_to_output_xml(train_extra_trees_classifier(), model="extra_trees")
-except Exception:
-    print "Exception at extra trees"
-    pass
-
-try:
-    write_to_output_xml(train_decision_tree_classifier(), model="decision_tree")
-except Exception:
-    print "Exception at decision tree"
-    pass
-
-try:
-    write_to_output_xml(train_random_forest_classifier(), model="random_forest")
-except Exception:
-    print "Exception at random forest"
-    pass
-
-try:
-    write_to_output_xml(train_xgboost_classifier(), model="xgboost")
+    write_to_output_xml(train_xgboost_classifier(), model="xgboost", type_of_data="test")
 except Exception:
     print "Exception at xgboost"
     pass

@@ -65,6 +65,9 @@ def save_vectors_for_texts(question_ids, question_subjects, question_bodies, typ
             if question_bodies[i][0] is not None:
                 # print txt[0], "---", question_bodies[i][0]
                 combined = str(u' '.join((txt[0], question_bodies[i][0])).encode('ascii', 'ignore').decode('ascii').strip())
+                # print question_ids[i], combined
+                if combined == "": # for Q129662_R99 in test data
+                    combined = "Qatar Living Lounge"
                 combined_text.append(combined)
             else:
                 combined_text.append(str(txt[0].encode('ascii', 'ignore').decode('ascii').strip()))
@@ -113,18 +116,16 @@ def write_data_to_pickle(filename, file_type, vector_for="body", combination_typ
 
     file_to_save = "questions_dict_" + file_type
 
-    # Saving to numpy file
-    print("Saving vectors to numpy file " + file_to_save + " ....!")
-    np.save(file_to_save, arr=questions_dict)
-    print("Saved...!")
+    # # Saving to numpy file
+    # print("Saving vectors to numpy file " + file_to_save + " ....!")
+    # np.save(file_to_save, arr=questions_dict)
+    # print("Saved...!")
 
     # # saving to pickle file
-    print("Saving data to questions_dict_" + file_type + ".pickle file ....!")
+    print("Saving data to " + file_to_save + ".pickle file ....!")
     with open(file_to_save + ".pickle", 'wb') as handle:
         pickle.dump(questions_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
     print("Saved...!")
-
-    # print questions_dict['Q1_R6']['body'], questions_dict['Q1_R6']['subject']
 
     question_ids, question_bodies, question_subjects = rdf.get_lists_from_dict(questions_dict)
     print "No of question samples now:", len(question_ids), len(question_bodies), len(question_subjects)
@@ -133,17 +134,18 @@ def write_data_to_pickle(filename, file_type, vector_for="body", combination_typ
                                                                                                     combination_type)
     print X_data['data'].shape
     print len(X_data['ids'])
+    print "\n\n"
 
 
+#
+# file = "questions_train.xml"
+# write_data_to_pickle(file, "train", vector_for="both", combination_type="concatenation") # Writing training Data
+#
+# file = "questions_dev.xml"
+# write_data_to_pickle(file, "dev", vector_for="both", combination_type="concatenation") # Writing dev Data
 
-file = "questions_train.xml"
-write_data_to_pickle(file, "train", vector_for="both", combination_type="concatenation") # Writing training Data
-
-file = "questions_dev.xml"
-write_data_to_pickle(file, "dev", vector_for="both", combination_type="concatenation") # Writing training Data
-
-
-
+file = "questions_test.xml"
+write_data_to_pickle(file, "test", vector_for="both", combination_type="concatenation") # Writing test Data
 
 
 

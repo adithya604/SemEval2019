@@ -1,0 +1,112 @@
+/home/adithya/Documents/SemEval2019/venv/bin/python /home/adithya/Documents/SemEval2019/Task8--Fact_Checking_in_CQA_Jan10th/task8/code/train_answers.py
+Using TensorFlow backend.
+Reading train data:
+495
+495
+Training Adaboost started:
+/home/adithya/Documents/SemEval2019/venv/local/lib/python2.7/site-packages/sklearn/model_selection/_search.py:841: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
+  DeprecationWarning)
+GridSearch Results:
+{'n_estimators': 45}
+0.4121212121212121
+AdaBoostClassifier(algorithm='SAMME.R', base_estimator=None,
+          learning_rate=1.0, n_estimators=45, random_state=None)
+0.357426097711812
+Reading dev data:
+112
+['Q7_R24_C10', 'Q7_R24_C9', 'Q7_R24_C1', 'Q7_R24_C3', 'Q7_R24_C5', 'Q7_R24_C6', 'Q7_R24_C7', 'Q1_R46_C3', 'Q6_R6_C1', 'Q7_R22_C10', 'Q6_R6_C7', 'Q6_R6_C5', 'Q12_R2_C1', 'Q2_R80_C5', 'Q2_R80_C4', 'Q2_R80_C6', 'Q2_R80_C1', 'Q2_R80_C2', 'Q3_R68_C5', 'Q11_R31_C6', 'Q11_R31_C7', 'Q11_R31_C1', 'Q11_R31_C2', 'Q11_R31_C3', 'Q11_R31_C8', 'Q11_R31_C9', 'Q8_R38_C4', 'Q9_R40_C1', 'Q8_R38_C2', 'Q14_R7_C2', 'Q14_R7_C1', 'Q2_R21_C10', 'Q14_R7_C10', 'Q8_R67_C8', 'Q8_R67_C9', 'Q8_R67_C2', 'Q8_R67_C4', 'Q8_R67_C5', 'Q8_R67_C6', 'Q3_R68_C1', 'Q3_R68_C2', 'Q3_R68_C3', 'Q11_R1_C1', 'Q11_R1_C2', 'Q9_R21_C1', 'Q2_R83_C9', 'Q9_R21_C2', 'Q9_R21_C9', 'Q2_R83_C1', 'Q11_R3_C4', 'Q2_R83_C4', 'Q2_R83_C5', 'Q3_R77_C10', 'Q2_R83_C7', 'Q11_R31_C10', 'Q11_R27_C9', 'Q2_R20_C1', 'Q2_R20_C7', 'Q2_R20_C6', 'Q2_R20_C5', 'Q2_R20_C4', 'Q4_R8_C2', 'Q7_R39_C6', 'Q1_R32_C8', 'Q7_R39_C4', 'Q7_R39_C5', 'Q14_R7_C9', 'Q7_R39_C1', 'Q1_R32_C1', 'Q11_R3_C7', 'Q1_R32_C3', 'Q11_R3_C2', 'Q7_R39_C9', 'Q9_R41_C7', 'Q9_R41_C5', 'Q9_R12_C6', 'Q9_R12_C5', 'Q9_R12_C3', 'Q9_R12_C2', 'Q14_R10_C8', 'Q14_R10_C4', 'Q14_R10_C5', 'Q14_R10_C1', 'Q2_R46_C6', 'Q2_R46_C5', 'Q2_R46_C3', 'Q2_R46_C2', 'Q2_R46_C1', 'Q1_R32_C10', 'Q2_R83_C8', 'Q7_R22_C1', 'Q10_R32_C2', 'Q1_R1_C1', 'Q1_R1_C3', 'Q1_R1_C5', 'Q9_R12_C7', 'Q3_R77_C5', 'Q3_R77_C6', 'Q9_R12_C4', 'Q2_R21_C8', 'Q3_R77_C1', 'Q2_R21_C5', 'Q2_R21_C7', 'Q3_R77_C8', 'Q2_R21_C1', 'Q2_R21_C2', 'Q7_R22_C3', 'Q12_R2_C9', 'Q2_R83_C6', 'Q7_R22_C4', 'Q6_R6_C6', 'Q7_R22_C9']
+Prediction started:
+Exception at adaboost
+Reading train data:
+495
+495
+Training Extra Trees started:
+/home/adithya/Documents/SemEval2019/venv/local/lib/python2.7/site-packages/sklearn/model_selection/_search.py:841: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
+  DeprecationWarning)
+GridSearch Results:
+{'max_features': 27, 'n_estimators': 9}
+0.3939393939393939
+ExtraTreesClassifier(bootstrap=False, class_weight=None, criterion='gini',
+           max_depth=None, max_features=27, max_leaf_nodes=None,
+           min_impurity_decrease=0.0, min_impurity_split=None,
+           min_samples_leaf=1, min_samples_split=2,
+           min_weight_fraction_leaf=0.0, n_estimators=9, n_jobs=None,
+           oob_score=False, random_state=None, verbose=0, warm_start=False)
+0.37154021608643456
+Training completed...!
+Reading dev data:
+112
+['Q7_R24_C10', 'Q7_R24_C9', 'Q7_R24_C1', 'Q7_R24_C3', 'Q7_R24_C5', 'Q7_R24_C6', 'Q7_R24_C7', 'Q1_R46_C3', 'Q6_R6_C1', 'Q7_R22_C10', 'Q6_R6_C7', 'Q6_R6_C5', 'Q12_R2_C1', 'Q2_R80_C5', 'Q2_R80_C4', 'Q2_R80_C6', 'Q2_R80_C1', 'Q2_R80_C2', 'Q3_R68_C5', 'Q11_R31_C6', 'Q11_R31_C7', 'Q11_R31_C1', 'Q11_R31_C2', 'Q11_R31_C3', 'Q11_R31_C8', 'Q11_R31_C9', 'Q8_R38_C4', 'Q9_R40_C1', 'Q8_R38_C2', 'Q14_R7_C2', 'Q14_R7_C1', 'Q2_R21_C10', 'Q14_R7_C10', 'Q8_R67_C8', 'Q8_R67_C9', 'Q8_R67_C2', 'Q8_R67_C4', 'Q8_R67_C5', 'Q8_R67_C6', 'Q3_R68_C1', 'Q3_R68_C2', 'Q3_R68_C3', 'Q11_R1_C1', 'Q11_R1_C2', 'Q9_R21_C1', 'Q2_R83_C9', 'Q9_R21_C2', 'Q9_R21_C9', 'Q2_R83_C1', 'Q11_R3_C4', 'Q2_R83_C4', 'Q2_R83_C5', 'Q3_R77_C10', 'Q2_R83_C7', 'Q11_R31_C10', 'Q11_R27_C9', 'Q2_R20_C1', 'Q2_R20_C7', 'Q2_R20_C6', 'Q2_R20_C5', 'Q2_R20_C4', 'Q4_R8_C2', 'Q7_R39_C6', 'Q1_R32_C8', 'Q7_R39_C4', 'Q7_R39_C5', 'Q14_R7_C9', 'Q7_R39_C1', 'Q1_R32_C1', 'Q11_R3_C7', 'Q1_R32_C3', 'Q11_R3_C2', 'Q7_R39_C9', 'Q9_R41_C7', 'Q9_R41_C5', 'Q9_R12_C6', 'Q9_R12_C5', 'Q9_R12_C3', 'Q9_R12_C2', 'Q14_R10_C8', 'Q14_R10_C4', 'Q14_R10_C5', 'Q14_R10_C1', 'Q2_R46_C6', 'Q2_R46_C5', 'Q2_R46_C3', 'Q2_R46_C2', 'Q2_R46_C1', 'Q1_R32_C10', 'Q2_R83_C8', 'Q7_R22_C1', 'Q10_R32_C2', 'Q1_R1_C1', 'Q1_R1_C3', 'Q1_R1_C5', 'Q9_R12_C7', 'Q3_R77_C5', 'Q3_R77_C6', 'Q9_R12_C4', 'Q2_R21_C8', 'Q3_R77_C1', 'Q2_R21_C5', 'Q2_R21_C7', 'Q3_R77_C8', 'Q2_R21_C1', 'Q2_R21_C2', 'Q7_R22_C3', 'Q12_R2_C9', 'Q2_R83_C6', 'Q7_R22_C4', 'Q6_R6_C6', 'Q7_R22_C9']
+Prediction started:
+(112, 4800)
+(112,)
+(112,)
+Writing predict_output/answers/predict_answers_extra_trees.txt completed...!
+Reading train data:
+495
+495
+Training Decision tree started:
+/home/adithya/Documents/SemEval2019/venv/local/lib/python2.7/site-packages/sklearn/model_selection/_search.py:841: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
+  DeprecationWarning)
+GridSearch Results:
+{'min_samples_split': 18, 'max_depth': 12}
+0.4202020202020202
+DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=12,
+            max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=18,
+            min_weight_fraction_leaf=0.0, presort=False, random_state=None,
+            splitter='best')
+0.4103065226090436
+Training completed...!
+Reading dev data:
+112
+['Q7_R24_C10', 'Q7_R24_C9', 'Q7_R24_C1', 'Q7_R24_C3', 'Q7_R24_C5', 'Q7_R24_C6', 'Q7_R24_C7', 'Q1_R46_C3', 'Q6_R6_C1', 'Q7_R22_C10', 'Q6_R6_C7', 'Q6_R6_C5', 'Q12_R2_C1', 'Q2_R80_C5', 'Q2_R80_C4', 'Q2_R80_C6', 'Q2_R80_C1', 'Q2_R80_C2', 'Q3_R68_C5', 'Q11_R31_C6', 'Q11_R31_C7', 'Q11_R31_C1', 'Q11_R31_C2', 'Q11_R31_C3', 'Q11_R31_C8', 'Q11_R31_C9', 'Q8_R38_C4', 'Q9_R40_C1', 'Q8_R38_C2', 'Q14_R7_C2', 'Q14_R7_C1', 'Q2_R21_C10', 'Q14_R7_C10', 'Q8_R67_C8', 'Q8_R67_C9', 'Q8_R67_C2', 'Q8_R67_C4', 'Q8_R67_C5', 'Q8_R67_C6', 'Q3_R68_C1', 'Q3_R68_C2', 'Q3_R68_C3', 'Q11_R1_C1', 'Q11_R1_C2', 'Q9_R21_C1', 'Q2_R83_C9', 'Q9_R21_C2', 'Q9_R21_C9', 'Q2_R83_C1', 'Q11_R3_C4', 'Q2_R83_C4', 'Q2_R83_C5', 'Q3_R77_C10', 'Q2_R83_C7', 'Q11_R31_C10', 'Q11_R27_C9', 'Q2_R20_C1', 'Q2_R20_C7', 'Q2_R20_C6', 'Q2_R20_C5', 'Q2_R20_C4', 'Q4_R8_C2', 'Q7_R39_C6', 'Q1_R32_C8', 'Q7_R39_C4', 'Q7_R39_C5', 'Q14_R7_C9', 'Q7_R39_C1', 'Q1_R32_C1', 'Q11_R3_C7', 'Q1_R32_C3', 'Q11_R3_C2', 'Q7_R39_C9', 'Q9_R41_C7', 'Q9_R41_C5', 'Q9_R12_C6', 'Q9_R12_C5', 'Q9_R12_C3', 'Q9_R12_C2', 'Q14_R10_C8', 'Q14_R10_C4', 'Q14_R10_C5', 'Q14_R10_C1', 'Q2_R46_C6', 'Q2_R46_C5', 'Q2_R46_C3', 'Q2_R46_C2', 'Q2_R46_C1', 'Q1_R32_C10', 'Q2_R83_C8', 'Q7_R22_C1', 'Q10_R32_C2', 'Q1_R1_C1', 'Q1_R1_C3', 'Q1_R1_C5', 'Q9_R12_C7', 'Q3_R77_C5', 'Q3_R77_C6', 'Q9_R12_C4', 'Q2_R21_C8', 'Q3_R77_C1', 'Q2_R21_C5', 'Q2_R21_C7', 'Q3_R77_C8', 'Q2_R21_C1', 'Q2_R21_C2', 'Q7_R22_C3', 'Q12_R2_C9', 'Q2_R83_C6', 'Q7_R22_C4', 'Q6_R6_C6', 'Q7_R22_C9']
+Prediction started:
+(112, 4800)
+(112,)
+(112,)
+Writing predict_output/answers/predict_answers_decision_tree.txt completed...!
+Reading train data:
+495
+495
+Training Random Forest started:
+/home/adithya/Documents/SemEval2019/venv/local/lib/python2.7/site-packages/sklearn/model_selection/_search.py:841: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
+  DeprecationWarning)
+GridSearch Results:
+{'n_estimators': 45}
+0.397979797979798
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=45, n_jobs=None,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
+0.36041586634653855
+Training completed...!
+Reading dev data:
+112
+['Q7_R24_C10', 'Q7_R24_C9', 'Q7_R24_C1', 'Q7_R24_C3', 'Q7_R24_C5', 'Q7_R24_C6', 'Q7_R24_C7', 'Q1_R46_C3', 'Q6_R6_C1', 'Q7_R22_C10', 'Q6_R6_C7', 'Q6_R6_C5', 'Q12_R2_C1', 'Q2_R80_C5', 'Q2_R80_C4', 'Q2_R80_C6', 'Q2_R80_C1', 'Q2_R80_C2', 'Q3_R68_C5', 'Q11_R31_C6', 'Q11_R31_C7', 'Q11_R31_C1', 'Q11_R31_C2', 'Q11_R31_C3', 'Q11_R31_C8', 'Q11_R31_C9', 'Q8_R38_C4', 'Q9_R40_C1', 'Q8_R38_C2', 'Q14_R7_C2', 'Q14_R7_C1', 'Q2_R21_C10', 'Q14_R7_C10', 'Q8_R67_C8', 'Q8_R67_C9', 'Q8_R67_C2', 'Q8_R67_C4', 'Q8_R67_C5', 'Q8_R67_C6', 'Q3_R68_C1', 'Q3_R68_C2', 'Q3_R68_C3', 'Q11_R1_C1', 'Q11_R1_C2', 'Q9_R21_C1', 'Q2_R83_C9', 'Q9_R21_C2', 'Q9_R21_C9', 'Q2_R83_C1', 'Q11_R3_C4', 'Q2_R83_C4', 'Q2_R83_C5', 'Q3_R77_C10', 'Q2_R83_C7', 'Q11_R31_C10', 'Q11_R27_C9', 'Q2_R20_C1', 'Q2_R20_C7', 'Q2_R20_C6', 'Q2_R20_C5', 'Q2_R20_C4', 'Q4_R8_C2', 'Q7_R39_C6', 'Q1_R32_C8', 'Q7_R39_C4', 'Q7_R39_C5', 'Q14_R7_C9', 'Q7_R39_C1', 'Q1_R32_C1', 'Q11_R3_C7', 'Q1_R32_C3', 'Q11_R3_C2', 'Q7_R39_C9', 'Q9_R41_C7', 'Q9_R41_C5', 'Q9_R12_C6', 'Q9_R12_C5', 'Q9_R12_C3', 'Q9_R12_C2', 'Q14_R10_C8', 'Q14_R10_C4', 'Q14_R10_C5', 'Q14_R10_C1', 'Q2_R46_C6', 'Q2_R46_C5', 'Q2_R46_C3', 'Q2_R46_C2', 'Q2_R46_C1', 'Q1_R32_C10', 'Q2_R83_C8', 'Q7_R22_C1', 'Q10_R32_C2', 'Q1_R1_C1', 'Q1_R1_C3', 'Q1_R1_C5', 'Q9_R12_C7', 'Q3_R77_C5', 'Q3_R77_C6', 'Q9_R12_C4', 'Q2_R21_C8', 'Q3_R77_C1', 'Q2_R21_C5', 'Q2_R21_C7', 'Q3_R77_C8', 'Q2_R21_C1', 'Q2_R21_C2', 'Q7_R22_C3', 'Q12_R2_C9', 'Q2_R83_C6', 'Q7_R22_C4', 'Q6_R6_C6', 'Q7_R22_C9']
+Prediction started:
+(112, 4800)
+(112,)
+(112,)
+Writing predict_output/answers/predict_answers_random_forest.txt completed...!
+Reading train data:
+495
+495
+Training xgboost started:
+Estimators: 100 Learning Rate:  0.1
+Saving model
+Model saved as /home/adithya/Documents/SemEval2019/Task8--Fact_Checking_in_CQA_Jan10th/task8/code/saved_models/xgboost/answers_est_100_eta_0.1_model.model ....!
+Reading dev data:
+112
+['Q7_R24_C10', 'Q7_R24_C9', 'Q7_R24_C1', 'Q7_R24_C3', 'Q7_R24_C5', 'Q7_R24_C6', 'Q7_R24_C7', 'Q1_R46_C3', 'Q6_R6_C1', 'Q7_R22_C10', 'Q6_R6_C7', 'Q6_R6_C5', 'Q12_R2_C1', 'Q2_R80_C5', 'Q2_R80_C4', 'Q2_R80_C6', 'Q2_R80_C1', 'Q2_R80_C2', 'Q3_R68_C5', 'Q11_R31_C6', 'Q11_R31_C7', 'Q11_R31_C1', 'Q11_R31_C2', 'Q11_R31_C3', 'Q11_R31_C8', 'Q11_R31_C9', 'Q8_R38_C4', 'Q9_R40_C1', 'Q8_R38_C2', 'Q14_R7_C2', 'Q14_R7_C1', 'Q2_R21_C10', 'Q14_R7_C10', 'Q8_R67_C8', 'Q8_R67_C9', 'Q8_R67_C2', 'Q8_R67_C4', 'Q8_R67_C5', 'Q8_R67_C6', 'Q3_R68_C1', 'Q3_R68_C2', 'Q3_R68_C3', 'Q11_R1_C1', 'Q11_R1_C2', 'Q9_R21_C1', 'Q2_R83_C9', 'Q9_R21_C2', 'Q9_R21_C9', 'Q2_R83_C1', 'Q11_R3_C4', 'Q2_R83_C4', 'Q2_R83_C5', 'Q3_R77_C10', 'Q2_R83_C7', 'Q11_R31_C10', 'Q11_R27_C9', 'Q2_R20_C1', 'Q2_R20_C7', 'Q2_R20_C6', 'Q2_R20_C5', 'Q2_R20_C4', 'Q4_R8_C2', 'Q7_R39_C6', 'Q1_R32_C8', 'Q7_R39_C4', 'Q7_R39_C5', 'Q14_R7_C9', 'Q7_R39_C1', 'Q1_R32_C1', 'Q11_R3_C7', 'Q1_R32_C3', 'Q11_R3_C2', 'Q7_R39_C9', 'Q9_R41_C7', 'Q9_R41_C5', 'Q9_R12_C6', 'Q9_R12_C5', 'Q9_R12_C3', 'Q9_R12_C2', 'Q14_R10_C8', 'Q14_R10_C4', 'Q14_R10_C5', 'Q14_R10_C1', 'Q2_R46_C6', 'Q2_R46_C5', 'Q2_R46_C3', 'Q2_R46_C2', 'Q2_R46_C1', 'Q1_R32_C10', 'Q2_R83_C8', 'Q7_R22_C1', 'Q10_R32_C2', 'Q1_R1_C1', 'Q1_R1_C3', 'Q1_R1_C5', 'Q9_R12_C7', 'Q3_R77_C5', 'Q3_R77_C6', 'Q9_R12_C4', 'Q2_R21_C8', 'Q3_R77_C1', 'Q2_R21_C5', 'Q2_R21_C7', 'Q3_R77_C8', 'Q2_R21_C1', 'Q2_R21_C2', 'Q7_R22_C3', 'Q12_R2_C9', 'Q2_R83_C6', 'Q7_R22_C4', 'Q6_R6_C6', 'Q7_R22_C9']
+Prediction started:
+(112, 4800)
+(112,)
+(112,)
+Writing predict_output/answers/predict_answers_xgboost.txt completed...!
+
+Process finished with exit code 0

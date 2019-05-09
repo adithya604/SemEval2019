@@ -10,7 +10,7 @@ folder = "train_and_dev_sets_questions_and_an"
 
 
 def save_vectors_for_texts(question_ids, question_subjects, question_bodies, type_of_data, vector_for="body",
-                                                    combination_type="concatenation"):
+                                                    combination_type="concatenation", without_urls = False):
     """
     DESCRIPTION:
         Generate skipthought vectors and save to numpy array files - X_data_bodies, X_data_subjects,
@@ -39,6 +39,8 @@ def save_vectors_for_texts(question_ids, question_subjects, question_bodies, typ
     print encoder
 
     filename_of_data = ""
+    if without_urls:
+        filename_of_data = "without_urls_" + filename_of_data
     id_list = question_ids
 
     if vector_for == "body":
@@ -53,11 +55,11 @@ def save_vectors_for_texts(question_ids, question_subjects, question_bodies, typ
                 body_list.append(str(body[0].encode('ascii', 'ignore').decode('ascii').strip()))
 
         skipthought_vectors = np.asarray(encoder.encode(body_list))
-        filename_of_data = "X_data_bodies"
+        filename_of_data += "X_data_bodies"
 
     elif vector_for == "subject":   # No None values in question subjects
         skipthought_vectors = np.asarray(encoder.encode(question_subjects))
-        filename_of_data = "X_data_subjects"
+        filename_of_data += "X_data_subjects"
 
     elif vector_for == "both" and combination_type == "concatenation":
         combined_text = []
@@ -73,7 +75,7 @@ def save_vectors_for_texts(question_ids, question_subjects, question_bodies, typ
         # exit(0)
 
         skipthought_vectors = np.asarray(encoder.encode(combined_text))
-        filename_of_data = "X_data_combined_concat"
+        filename_of_data += "X_data_combined_concat"
 
     elif vector_for == "both" and combination_type == "average":
         body_list = [] # contains question bodies list without None Values in question body
@@ -87,7 +89,7 @@ def save_vectors_for_texts(question_ids, question_subjects, question_bodies, typ
         body_stv    = np.asarray(encoder.encode(body_list))
         subject_stv = np.asarray(encoder.encode(subj_list))
         skipthought_vectors = (body_stv + subject_stv) / 2.0
-        filename_of_data = "X_data_combined_average"
+        filename_of_data += "X_data_combined_average"
 
     data_dict = {"ids" : id_list, "data" : skipthought_vectors}
 
@@ -95,7 +97,7 @@ def save_vectors_for_texts(question_ids, question_subjects, question_bodies, typ
     # np.save(filename_of_data, arr=skipthought_vectors)
     # print "Saved...!"
 
-    filename_of_data = filename_of_data + "_" + type_of_data
+    filename_of_data += "_" + type_of_data
     print "Saving data to " + filename_of_data + ".pickle file ....!"
     with open(filename_of_data+'.pickle', 'wb') as handle:
         pickle.dump(data_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -104,19 +106,22 @@ def save_vectors_for_texts(question_ids, question_subjects, question_bodies, typ
     return data_dict
 
 
-def write_data_to_pickle(filename, file_type, vector_for="body", combination_type="concatenation"):
+def write_data_to_pickle(filename, file_type, vector_for="body", combination_type="concatenation", without_urls = False):
 
     file_path = os.path.join(curr_dir, '..', folder, filename)
 
-    questions_dict = rdf.read_question_labels_from_xml(file_path)
+    questions_dict = rdf.read_question_labels_from_xml(file_path, without_urls)
     print("No of " + file_type + " samples :", len(questions_dict))
 
     file_to_save = "questions_dict_" + file_type
 
-    # Saving to numpy file
-    print("Saving vectors to numpy file " + file_to_save + " ....!")
-    np.save(file_to_save, arr=questions_dict)
-    print("Saved...!")
+    if without_urls:
+        file_to_save = "without_urls_" + file_to_save
+
+    # # Saving to numpy file
+    # print("Saving vectors to numpy file " + file_to_save + " ....!")
+    # np.save(file_to_save, arr=questions_dict)
+    # print("Saved...!")
 
     # # saving to pickle file
     print("Saving data to questions_dict_" + file_type + ".pickle file ....!")
@@ -130,17 +135,17 @@ def write_data_to_pickle(filename, file_type, vector_for="body", combination_typ
     print "No of question samples now:", len(question_ids), len(question_bodies), len(question_subjects)
 
     X_data = save_vectors_for_texts(question_ids, question_subjects, question_bodies, file_type, vector_for,
-                                                                                                    combination_type)
+                                                                     combination_type, without_urls = without_urls)
     print X_data['data'].shape
     print len(X_data['ids'])
 
 
 
 file = "questions_train.xml"
-write_data_to_pickle(file, "train", vector_for="both", combination_type="concatenation") # Writing training Data
+write_data_to_pickle(file, "train", vector_for="both", combination_type="concatenation", without_urls=True) # Writing training Data
 
 file = "questions_dev.xml"
-write_data_to_pickle(file, "dev", vector_for="both", combination_type="concatenation") # Writing training Data
+write_data_to_pickle(file, "dev", vector_for="both", combination_type="concatenation", without_urls=True) # Writing training Data
 
 
 
